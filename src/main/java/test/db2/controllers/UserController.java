@@ -3,6 +3,8 @@ package test.db2.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +18,20 @@ import test.db2.domain.User;
 @Controller
 public class UserController {
 	
+	private Logger log = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
     JdbcTemplate jdbcTemplate;
 
 	@RequestMapping("/")
     public @ResponseBody ResponseEntity<String> health() {
+		log.info("health API invoked");
         return new ResponseEntity<String>("Service UP", HttpStatus.OK);
     }
 	
     @RequestMapping("/test")
     public @ResponseBody ResponseEntity<String> example() {
+    	log.info("DB2 test API invoked");
         List<String> list = new ArrayList<>();
         list.add("Table data...");
         jdbcTemplate.query(
