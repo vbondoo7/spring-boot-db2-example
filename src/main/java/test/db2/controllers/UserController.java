@@ -34,7 +34,7 @@ public class UserController {
     	log.info("DB2 test API invoked");
         List<String> list = new ArrayList<>();
         list.add("Table data...");
-        jdbcTemplate.query("SELECT * FROM TEST_TABLE", new Object[]{},
+        jdbcTemplate.query("SELECT * FROM TEST_DB.TEST_TABLE", new Object[]{},
                 (rs,rowNum) -> new User(rs.getInt("id"), rs.getString("name")))
                 .forEach(thing -> list.add(thing.toString()));
         return new ResponseEntity<String>(list.toString(), HttpStatus.OK);
