@@ -23,4 +23,9 @@ public class User {
 		this.name = name;
 	}
     
+	@Override
+    public String toString() { 
+        return String.format(id + " -- " + name + "\n"); 
+    } 
+ 
 }
