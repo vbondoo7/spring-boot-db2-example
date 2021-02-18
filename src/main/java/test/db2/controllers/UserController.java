@@ -19,6 +19,11 @@ public class UserController {
 	@Autowired
     JdbcTemplate jdbcTemplate;
 
+	@RequestMapping("/")
+    public @ResponseBody ResponseEntity<String> health() {
+        return new ResponseEntity<String>("Service UP", HttpStatus.OK);
+    }
+	
     @RequestMapping("/test")
     public @ResponseBody ResponseEntity<String> example() {
         List<String> list = new ArrayList<>();
